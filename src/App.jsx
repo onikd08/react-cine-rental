@@ -1,7 +1,19 @@
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import MovieList from "./components/MovieList";
+import Sidebar from "./components/Sidebar";
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Header></Header>
+      <main>
+        <div className="container grid lg:grid-cols-[218px_1fr] gap-[3.5rem]">
+          <Sidebar></Sidebar>
+          <MovieList></MovieList>
+        </div>
+      </main>
+      <Footer></Footer>
     </>
   );
 }
