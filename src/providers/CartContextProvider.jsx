@@ -4,21 +4,10 @@ import { createContext, useState } from "react";
 export const CartContext = createContext([]);
 
 const CartContextProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-
-  const handleAddToCart = (e, movie) => {
-    e.stopPropagation();
-    const found = cart.find((item) => item.id === movie.id);
-    if (!found) {
-      setCart([...cart, movie]);
-      alert("Movie is added");
-    } else {
-      alert("The movie is already in your cart");
-    }
-  };
+  const [cartData, setCartData] = useState([]);
 
   return (
-    <CartContext.Provider value={{ cart, handleAddToCart }}>
+    <CartContext.Provider value={{ cartData, setCartData }}>
       {children}
     </CartContext.Provider>
   );
