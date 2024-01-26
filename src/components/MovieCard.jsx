@@ -6,6 +6,8 @@ import MovieDetailsModal from "./MovieDetailsModal";
 import tag from "../assets/tag.svg";
 import { CartContext } from "../providers/CartContextProvider";
 
+import { toast } from "react-toastify";
+
 const MovieCard = ({ movie }) => {
   const { cover, title, price, rating, genre } = movie;
   const [showMovieModal, setShowMovieModal] = useState(false);
@@ -31,9 +33,9 @@ const MovieCard = ({ movie }) => {
         type: "ADD_TO_CART",
         payload: { ...movie },
       });
-      alert("Movie is added");
+      toast.success(`${movie.title} is added successfully`);
     } else {
-      alert("The movie is already in your cart");
+      toast.error(`${movie.title} has already been added.`);
     }
   };
 

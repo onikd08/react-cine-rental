@@ -3,6 +3,7 @@ import getImageUrl from "../utils/getImageUrl";
 import deleteIcon from "../assets/delete.svg";
 import { useContext } from "react";
 import { CartContext } from "../providers/CartContextProvider";
+import { toast } from "react-toastify";
 
 const CartItem = ({ movie }) => {
   const { title, cover, price, genre } = movie;
@@ -13,6 +14,7 @@ const CartItem = ({ movie }) => {
       type: "REMOVE_FROM_CART",
       payload: item,
     });
+    toast.success(`${item.title} has been removed successfully`);
   };
   return (
     <>
