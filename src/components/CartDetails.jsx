@@ -6,7 +6,7 @@ import checkOut from "../assets/icons/checkout.svg";
 
 /* eslint-disable react/prop-types */
 const CartDetails = ({ onClose }) => {
-  const { cartData } = useContext(CartContext);
+  const { state } = useContext(CartContext);
 
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -15,8 +15,8 @@ const CartDetails = ({ onClose }) => {
           <h2 className="text-2xl lg:text-[30px] mb-10 font-bold">
             Your Carts
           </h2>
-          {cartData.length ? (
-            cartData.map((movie) => (
+          {state.cartData.length ? (
+            state.cartData.map((movie) => (
               <CartItem key={movie.id} movie={movie}></CartItem>
             ))
           ) : (

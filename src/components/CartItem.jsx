@@ -5,12 +5,14 @@ import { useContext } from "react";
 import { CartContext } from "../providers/CartContextProvider";
 
 const CartItem = ({ movie }) => {
-  const { id, title, cover, price, genre } = movie;
-  const { cartData, setCartData } = useContext(CartContext);
+  const { title, cover, price, genre } = movie;
+  const { dispatch } = useContext(CartContext);
 
-  const handleRemoveCartItem = (movieId) => {
-    const nextCartData = cartData.filter((movie) => movie.id !== movieId);
-    setCartData(nextCartData);
+  const handleRemoveCartItem = (item) => {
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: item,
+    });
   };
   return (
     <>
@@ -30,7 +32,7 @@ const CartItem = ({ movie }) => {
           </div>
           <div className="flex justify-between gap-4 items-center">
             <button
-              onClick={() => handleRemoveCartItem(id)}
+              onClick={() => handleRemoveCartItem(movie)}
               className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
             >
               <img className="w-5 h-5" src={deleteIcon} alt="" />
