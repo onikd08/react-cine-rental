@@ -15,10 +15,13 @@ const CartDetails = ({ onClose }) => {
           <h2 className="text-2xl lg:text-[30px] mb-10 font-bold">
             Your Carts
           </h2>
-          {cartData.length &&
-            cartData.map((movie, idx) => (
-              <CartItem key={idx} movie={movie}></CartItem>
-            ))}
+          {cartData.length ? (
+            cartData.map((movie) => (
+              <CartItem key={movie.id} movie={movie}></CartItem>
+            ))
+          ) : (
+            <p className="text-xl">The cart is empty</p>
+          )}
           <div className="flex items-center justify-end gap-2">
             <a
               className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm"
