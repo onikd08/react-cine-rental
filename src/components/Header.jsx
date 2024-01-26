@@ -2,11 +2,13 @@ import logo from "../assets/logo.svg";
 import ring from "../assets/ring.svg";
 import moon from "../assets/icons/moon.svg";
 import cart from "../assets/shopping-cart.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CartDetails from "./CartDetails";
+import { CartContext } from "../providers/CartContextProvider";
 
 const Header = () => {
   const [showCartDetails, setShowCartDetails] = useState(false);
+  const { cartData } = useContext(CartContext);
 
   return (
     <header>
@@ -41,6 +43,11 @@ const Header = () => {
               href="#"
             >
               <img src={cart} width="24" height="24" alt="" />
+              {cartData.length > 0 && (
+                <span className="rounded-full absolute top-[-0.75rem] left-5 bg-[#12CF6F] text-white text-center p-[2px] w-[30px] h-[30px]">
+                  {cartData.length}
+                </span>
+              )}
             </a>
           </li>
         </ul>
