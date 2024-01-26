@@ -2,7 +2,7 @@ import getImageUrl from "../utils/getImageUrl";
 import tag from "../assets/tag.svg";
 
 /* eslint-disable react/prop-types */
-const MovieDetailsModal = ({ movie, onClose }) => {
+const MovieDetailsModal = ({ movie, onClose, onCartAdd }) => {
   const { cover, title, price, genre, description } = movie;
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -28,6 +28,7 @@ const MovieDetailsModal = ({ movie, onClose }) => {
               <a
                 className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
                 href="#"
+                onClick={(e) => onCartAdd(e, movie)}
               >
                 <img src={tag} alt="tag" />
                 <span>${price}| Add to Cart</span>
