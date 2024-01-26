@@ -1,14 +1,17 @@
 import logo from "../assets/logo.svg";
 import ring from "../assets/ring.svg";
 import moon from "../assets/icons/moon.svg";
+import sun from "../assets/icons/sun.svg";
 import cart from "../assets/shopping-cart.svg";
 import { useContext, useState } from "react";
 import CartDetails from "./CartDetails";
 import { CartContext } from "../providers/CartContextProvider";
+import { ThemeContext } from "../providers/ThemeContextProvider";
 
 const Header = () => {
   const [showCartDetails, setShowCartDetails] = useState(false);
   const { cartData } = useContext(CartContext);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
 
   return (
     <header>
@@ -33,8 +36,14 @@ const Header = () => {
             <a
               className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
               href="#"
+              onClick={() => setDarkMode(!darkMode)}
             >
-              <img src={moon} width="24" height="24" alt="moon" />
+              <img
+                src={darkMode ? sun : moon}
+                width="24"
+                height="24"
+                alt="moon"
+              />
             </a>
           </li>
           <li onClick={() => setShowCartDetails(true)}>
